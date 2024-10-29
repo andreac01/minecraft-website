@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request
 from flask_cors import CORS
 import psutil
 from llama_cpp import Llama  # Assuming llama_cpp is the module for Llama
@@ -31,7 +31,7 @@ def send_message():
 	response = llm.create_chat_completion(
 		messages=messages,
 		stream=True,
-		max_tokens=512,
+		max_tokens=1024,
 		repeat_penalty=2,
 		temperature=0.4,
 		top_p=0.9,
@@ -54,4 +54,3 @@ def send_message():
 
 if __name__ == '__main__':
 	app.run(debug=True)
-
